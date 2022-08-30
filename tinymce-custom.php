@@ -41,7 +41,7 @@
 	function tuts_mcekit_editor_style($url) {
 	
 			if ( !empty($url) )
-			
+
 					$url .= ',';
 	
 			// Retrieves the plugin directory URL and adds editor stylesheet
@@ -95,9 +95,9 @@
 	} 
 	
 	// add_filter('tiny_mce_before_init', 'tuts_mcekit_editor_settings');
-	/*
-	add_filter('mce_css', 'tuts_mcekit_editor_style');
-	function tuts_mcekit_editor_style($url) {
+	
+	add_filter('mce_css', 'jjad_mcekit_editor_style');
+	function jjad_mcekit_editor_style($url) {
 	
 			if ( !empty($url) )
 					$url .= ',';
@@ -112,7 +112,6 @@
 	/**
 	 * Add "Styles" drop-down
 	 */
-	add_filter( 'mce_buttons_2', 'tuts_mce_editor_buttons' );
 	
 	function tuts_mce_editor_buttons( $buttons ) {
 			array_unshift( $buttons, 'styleselect' );
@@ -131,17 +130,24 @@
 							'title' => 'Download Link',
 							'selector' => 'a',
 							'classes' => 'download'
-							),
-					array(
-							'title' => 'Testimonial',
-							'selector' => 'p',
-							'classes' => 'testimonial',
 					),
 					array(
-							'title' => 'Warning Box 2',
+							'title' => 'Warning Box',
 							'block' => 'div',
 							'classes' => 'warning box',
 							'wrapper' => true
+					),
+					array(
+						'title' => 'Badge Blue Version',
+						'block' => 'div',
+						'classes' => 'badge badge-blue',
+						'wrapper' => true
+					),
+					array(
+						'title' => 'Badge Green Version',
+						'block' => 'div',
+						'classes' => 'badge badge-green',
+						'wrapper' => true
 					),
 					array(
 							'title' => 'Red Uppercase Text',
