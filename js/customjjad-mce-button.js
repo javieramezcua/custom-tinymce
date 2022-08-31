@@ -6,6 +6,7 @@
 									onclick: function() {
 										// change the shortcode as per your requirement                                                                                                                                                                                                        
 										alert('this is a message');
+										
 								 }
 				});
 	});
