@@ -5,7 +5,7 @@
 									icon: false,
 									onclick: function() {
 										// change the shortcode as per your requirement                                                                                                                                                                                                        
-										alert('xxxxx');
+										alert('this is a message');
 								 }
 				});
 	});
