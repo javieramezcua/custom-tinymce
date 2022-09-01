@@ -65,33 +65,26 @@
 	 * Add "Styles" drop-down content or classes
 	 */ 
 	function tuts_mcekit_editor_settings($settings) {
-			if (!empty($settings['theme_advanced_styles']))
-					$settings['theme_advanced_styles'] .= ';';    
-			else
-					$settings['theme_advanced_styles'] = '';
+			if (!empty($settings['theme_advanced_styles'])){
+					$settings['theme_advanced_styles'] .= ';'; 
+			}   
+			else{
+				$settings['theme_advanced_styles'] = '';
 	
-			/**
-			 * Add styles in $classes array.
-			 * The format for this setting is "Name to display=class-name;".
-			 * More info: http://wiki.moxiecode.com/index.php/TinyMCE:Configuration/theme_advanced_styles
-			 *
-			 * To be allow translation of the class names, these can be set in a PHP array (to keep them
-			 * readable) and then converted to TinyMCE's format. You will need to replace 'textdomain' with
-			 * your theme's textdomain.
-			 */
-			$classes = array(
-					__('Warning','textdomain') => 'warning',
-					__('Notice','textdomain') => 'notice',
-					__('Download','textdomain') => 'download',
-					__('Testimonial','textdomain') => 'testimonial box',
-			);
-	
-			$class_settings = '';
-			foreach ( $classes as $name => $value )
-					$class_settings .= "{$name}={$value};";
-	
-			$settings['theme_advanced_styles'] .= trim($class_settings, '; ');
-			return $settings;
+				$classes = array(
+						__('Warning','textdomain') => 'warning',
+						__('Notice','textdomain') => 'notice',
+						__('Download','textdomain') => 'download',
+						__('Testimonial','textdomain') => 'testimonial box',
+				);
+		
+				$class_settings = '';
+				foreach ( $classes as $name => $value )
+						$class_settings .= "{$name}={$value};";
+		
+				$settings['theme_advanced_styles'] .= trim($class_settings, '; ');
+				return $settings;
+		}
 	} 
 	
 	// add_filter('tiny_mce_before_init', 'tuts_mcekit_editor_settings');
@@ -104,7 +97,7 @@
 	
 			// Retrieves the plugin directory URL
 			// Change the path here if using different directories
-			$url .= trailingslashit( plugin_dir_url(__FILE__) ) . '/editor-styles.css';
+			$url .=  get_stylesheet_directory_uri().'/tinymce-custom/css/editor-styles.css';
 	
 			return $url;
 	}
@@ -166,19 +159,20 @@
 	
 	}
 	
+	
 	/* Learn TinyMCE style format options at http://www.tinymce.com/wiki.php/Configuration:formats */
 	
 	/*
 	* Add custom stylesheet to the website front-end with hook 'wp_enqueue_scripts'
 	*/
-	/* add_action('wp_enqueue_scripts', 'tuts_mcekit_editor_enqueue'); */
+	add_action('wp_enqueue_scripts', 'tuts_mcekit_editor_enqueue');
 	
 	/*
 	* Enqueue stylesheet, if it exists.
 	*/
-	/*
+	
 	function tuts_mcekit_editor_enqueue() {
-		$StyleUrl = plugin_dir_url(__FILE__).'editor-styles.css'; // Customstyle.css is relative to the current file
-		wp_enqueue_style( 'myCustomStyles', $StyleUrl );
+		// Customstyle.css is relative to the current file
+		wp_enqueue_style( 'myCustomStyles', get_stylesheet_directory_uri().'/tinymce-custom/css/editor-styles.css');
 	}
-	*/
+	

@@ -1,6 +1,10 @@
-.badge.badge-blue {
+.badge-blue {
 	color: #fff;
 	background-color: #070540;
+}
+.badge-green {
+	color: #fff;
+	background-color: #52c827;
 }
 .badge {
 	display: inline-block;

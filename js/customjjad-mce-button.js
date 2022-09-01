@@ -6,9 +6,8 @@
 									onclick: function() {
 										// change the shortcode as per your requirement                                                                                                                                                                                                        
 										alert('this is a message');
-										
+										console.log('si se lee homs');
 								 }
 				});
 	});
 })();
-console.log('si se lee homs');
