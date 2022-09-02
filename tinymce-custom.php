@@ -37,19 +37,6 @@
 		return $plugin_array;
 	}
 
-	// add_filter('mce_css', 'tuts_mcekit_editor_style');
-	function tuts_mcekit_editor_style($url) {
-	
-			if ( !empty($url) )
-
-					$url .= ',';
-	
-			// Retrieves the plugin directory URL and adds editor stylesheet
-			// Change the path here if using different directories
-			$url .= trailingslashit( plugin_dir_url(__FILE__) ) . '/editor-styles.css';
-	
-			return $url;
-	}
 	
 	/**
 	 * Add "Styles" drop-down
@@ -61,33 +48,6 @@
 	
 	add_filter('mce_buttons_2', 'tuts_mcekit_editor_buttons');
 	
-	/**
-	 * Add "Styles" drop-down content or classes
-	 */ 
-	function tuts_mcekit_editor_settings($settings) {
-			if (!empty($settings['theme_advanced_styles'])){
-					$settings['theme_advanced_styles'] .= ';'; 
-			}   
-			else{
-				$settings['theme_advanced_styles'] = '';
-	
-				$classes = array(
-						__('Warning','textdomain') => 'warning',
-						__('Notice','textdomain') => 'notice',
-						__('Download','textdomain') => 'download',
-						__('Testimonial','textdomain') => 'testimonial box',
-				);
-		
-				$class_settings = '';
-				foreach ( $classes as $name => $value )
-						$class_settings .= "{$name}={$value};";
-		
-				$settings['theme_advanced_styles'] .= trim($class_settings, '; ');
-				return $settings;
-		}
-	} 
-	
-	// add_filter('tiny_mce_before_init', 'tuts_mcekit_editor_settings');
 	
 	add_filter('mce_css', 'jjad_mcekit_editor_style');
 	function jjad_mcekit_editor_style($url) {
