@@ -1,4 +1,5 @@
 (function() {
+
 	tinymce.PluginManager.add('customjjad-mce-button', function( editor, url ) {
 			editor.addButton('customjjad-mce-button', {
 									text: 'Generate PDF',

@@ -80,37 +80,15 @@
 	
 			$style_formats = array(
 					array(
-							'title' => 'Download Link',
-							'selector' => 'a',
-							'classes' => 'download'
-					),
-					array(
-							'title' => 'Warning Box',
-							'block' => 'div',
-							'classes' => 'warning box',
-							'wrapper' => true
-					),
-					array(
 						'title' => 'Badge Blue Version',
-						'block' => 'div',
+						'inline' => 'span',
 						'classes' => 'badge badge-blue',
-						'wrapper' => true
 					),
 					array(
 						'title' => 'Badge Green Version',
-						'block' => 'div',
+						'inline' => 'span',
 						'classes' => 'badge badge-green',
-						'wrapper' => true
 					),
-					array(
-							'title' => 'Red Uppercase Text',
-							'inline' => 'span',
-							'styles' => array(
-									'color' => '#ff0000',
-									'fontWeight' => 'bold',
-									'textTransform' => 'uppercase'
-							)
-					)
 			);
 	
 			$settings['style_formats'] = json_encode( $style_formats );
@@ -135,4 +113,15 @@
 		// Customstyle.css is relative to the current file
 		wp_enqueue_style( 'myCustomStyles', get_stylesheet_directory_uri().'/tinymce-custom/css/editor-styles.css');
 	}
-	
+
+	function kv_add_google_webfonts_to_editor() {
+    $font_url = 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap';
+    add_editor_style( str_replace( ',', '%2C', $font_url ) );
+	}
+	add_action( 'init', 'kv_add_google_webfonts_to_editor' );
+	function kv_custom_font_list($in){
+		$in['font_formats']='Roboto=Roboto' ;
+	 
+	 return $in;
+	}
+	add_filter('tiny_mce_before_init', 'kv_custom_font_list' );
